@@ -16,15 +16,14 @@ import { defineAsyncComponent } from "vue";
 export default {
   components: {
     SplashScreen,
-    Home: defineAsyncComponent(
-      () =>
-        new Promise((resolve) => {
-          setTimeout(() => {
-            resolve(() => import("./components/HomeCash.vue"));
-          }, 2500);
-        })
-    ),
-  },
+    Home: defineAsyncComponent(() => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(import("./components/HomeCash.vue"));
+        }, 2500);
+      });
+    })
+  }
 };
 </script>
 
